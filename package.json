@@ -1,0 +1,15 @@
+{
+  "name": "google-autocomplete",
+  "version": "1.0.0",
+  "description": "",
+  "main": "index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "author": "Patrik Šimunič <patriksimunic@hotmail.com>",
+  "license": "MIT",
+  "dependencies": {
+    "express": "^4.16.2",
+    "http-proxy": "^1.16.2"
+  }
+}
