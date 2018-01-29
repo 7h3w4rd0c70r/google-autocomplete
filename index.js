@@ -1,8 +1,13 @@
 
-var app = require('express')()
-var createProxyServer = require('http-proxy').createProxyServer
+const app = require('express')()
+const createProxyServer = require('http-proxy').createProxyServer
 
-var httpProxy = createProxyServer({
+let port = 8092
+if (!isNaN(process.env['PORT'])) {
+    port = Number(process.env['PORT'])
+}
+
+const httpProxy = createProxyServer({
     changeOrigin: true,
     target: 'http://suggestqueries.google.com',
 })
@@ -21,8 +26,8 @@ app.get('/complete/search', function (req, res, next) {
     httpProxy.web(req, res)
 })
 
-app.listen(8092, function () {
+app.listen(port, function () {
     if (process.env['NODE_ENV'] !== 'PROD') {
-        console.log('Listening on *:' + 8092)
+        console.log(`Listening on *:${port}`)
     }
 })
